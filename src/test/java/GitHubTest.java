@@ -3,6 +3,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class GitHubTest {
@@ -35,17 +37,20 @@ public class GitHubTest {
 
         GitHubHomePage homePage = loginPage.doLogin(email, password);
 
-        GitHubProjectPage projectPage = homePage.clickOnFirstProjectLinkInRepositoriesListAndGoToItsPage();
+        GitHubProjectPage projectPage = homePage.clickOnSecondProjectLinkInRepositoriesListAndGoToItsPage();
 
         GitHubIssuesTab issuesTab = projectPage.ClickOnIssuesTabAndGoToIssuesTab();
 
-        try {
-            Thread.sleep(5000);
-        } catch (Exception e) {}
+
+
 
         GitHubMilestonesTab milestonesTab = issuesTab.clickMilestoneButtonAndGoToMilestonesTab();
+
+
+
         GitHubNewMilestonePage newMilstionePage = milestonesTab.clickNewMilestoneBtnAndGoToNewMilstonePage();
-        String milestoneTitle = "MilestoneTitle";
+        Date d = new Date();
+        String milestoneTitle = "MilestoneTitle"+ d.getTime();
         milestonesTab = newMilstionePage.fillMilestoneDetailsAndGoToIssuesPage(
                 milestoneTitle, "01", "01", "2200", "Milstone Description");
 

@@ -9,7 +9,7 @@ public class GitHubIssuesTab extends PageObject {
 
     By BtnNewIssue = By.cssSelector(".btn-primary");
 
-    By BtnMilstonesPage = By.cssSelector("div.subnav-links > :last-child");
+    By BtnMilstonesPage = By.cssSelector("div.subnav-links > :last-child"); //By.cssSelector("[href=\"\\/netanel0531\\/hello-world\\/milestones\"]");
     By BtnLabelsPage = By.cssSelector("div.subnav-links > :first-child");
 
     public GitHubIssuesTab(WebDriver d) { super(d); }
@@ -19,7 +19,12 @@ public class GitHubIssuesTab extends PageObject {
     }
 
     public GitHubMilestonesTab clickMilestoneButtonAndGoToMilestonesTab() {
+
         driver.findElement(BtnMilstonesPage).click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {}
 
         return new GitHubMilestonesTab(driver);
     }
@@ -33,6 +38,10 @@ public class GitHubIssuesTab extends PageObject {
 //        } catch (Exception e) {}
 
         driver.findElement(BtnNewIssue).click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {}
 
         return new GitHubNewIssuePage(driver);
     }

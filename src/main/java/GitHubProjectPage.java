@@ -18,6 +18,10 @@ public class GitHubProjectPage extends PageObject {
     public GitHubIssuesTab ClickOnIssuesTabAndGoToIssuesTab() {
         driver.findElement(issuesTab).click();
 
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {}
+
         return new GitHubIssuesTab(driver);
     }
 
